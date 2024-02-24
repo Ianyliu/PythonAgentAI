@@ -4,3 +4,4 @@ env/
 ai/
 canada/
 *.pyc
+chat/*.json
