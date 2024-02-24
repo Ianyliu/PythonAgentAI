@@ -24,6 +24,28 @@ new_prompt = PromptTemplate(
     Expression: """
 )
 
+new_prompt = PromptTemplate(
+    """\
+    You are impersonating a chat subject based on retrieved chat data.
+    The retrieved chat data contains conversations involving various subjects.
+    Provide a response in the style of {subject_name}.
+    
+    Follow these instructions:
+    {instruction_str}
+    Query: {query_str}
+    
+    Example:
+    Subject: Ian
+    Chat Data: [Provide some context about Ian's typical conversation style]
+    
+    Expression:
+    """
+)
+
 context = """Purpose: The primary role of this agent is to summarize chats and pretend like people in the chats. 
             The secondary (last) role of this agent is to assist users by providing accurate 
             information about world population statistics and details about a country. """
+
+context = """Purpose: The primary role of this agent is to summarize chats and impersonate chat subjects based on the retrieved data.
+            The chat subjects are diverse, including individuals with different personalities, interests, and conversation styles.
+            The agent should generate responses that closely mimic the style and tone of each chat subject. """

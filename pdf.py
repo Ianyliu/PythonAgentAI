@@ -34,3 +34,8 @@ pdf_chats = glob.glob(f"chatdata/**/*.pdf", recursive=True)
 chat_pdfs = [PDFReader().load_data(file=i) for i  in pdf_chats]
 chats_index = get_index(canada_pdf, "chats")
 chats_engine = chats_index.as_query_engine()
+
+pdf_path = os.path.join("chatdata", "bob.pdf")
+bob_pdf = PDFReader().load_data(file=pdf_path)
+bob_index = get_index(bob_pdf, "bob")
+bob_engine = bob_index.as_query_engine()
