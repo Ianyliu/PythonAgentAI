@@ -1,8 +1,10 @@
-from llama_index.tools import FunctionTool
+from llama_index.core.tools import FunctionTool
 import os
+from dotenv import load_dotenv
 
 note_file = os.path.join("data", "notes.txt")
 
+load_dotenv()
 
 def save_note(note):
     if not os.path.exists(note_file):

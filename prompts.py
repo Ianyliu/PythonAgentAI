@@ -1,5 +1,7 @@
-from llama_index import PromptTemplate
+from llama_index.core import PromptTemplate
+from dotenv import load_dotenv
 
+load_dotenv()
 
 instruction_str = """\
     1. Convert the query to executable Python code using Pandas.
