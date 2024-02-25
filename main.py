@@ -79,7 +79,7 @@ tools = [
         query_engine=bob_engine,
         metadata=ToolMetadata(
             name="bob_chat_data",
-            description="this gives detailed information about Bob's chat with Ian",
+            description="Bob's chat with Ian",
         ),
     ),
 ]
