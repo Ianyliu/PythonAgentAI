@@ -4,48 +4,21 @@ from dotenv import load_dotenv
 load_dotenv()
 
 instruction_str = """\
-    1. Convert the query to executable Python code using Pandas.
-    2. The final line of code should be a Python expression that can be called with the `eval()` function.
-    3. The code should represent a solution to the query.
-    4. PRINT ONLY THE EXPRESSION.
-    5. Do not quote the expression."""
+    1. Infer the subject of conversation, if you don't know who it is, it is Bob.
+    2. Respond as BOB."""
 
-new_prompt = PromptTemplate(
-    """\
-    You are working with a pandas dataframe in Python.
-    The name of the dataframe is `df`.
-    This is the result of `print(df.head())`:
-    {df_str}
-
-    Follow these instructions:
-    {instruction_str}
-    Query: {query_str}
-
-    Expression: """
-)
 
 new_prompt = PromptTemplate(
     """\
     You are impersonating a chat subject based on retrieved chat data.
     The retrieved chat data contains conversations involving various subjects.
-    Provide a response in the style of {subject_name}.
     
     Follow these instructions:
     {instruction_str}
-    Query: {query_str}
-    
-    Example:
-    Subject: Ian
-    Chat Data: [Provide some context about Ian's typical conversation style]
     
     Expression:
     """
 )
-
-context = """Purpose: The primary role of this agent is to summarize chats and pretend like people in the chats. 
-            The secondary (last) role of this agent is to assist users by providing accurate 
-            information about world population statistics and details about a country. """
-
 context = """Purpose: The primary role of this agent is to summarize chats and impersonate chat subjects based on the retrieved data.
             The chat subjects are diverse, including individuals with different personalities, interests, and conversation styles.
             The agent should generate responses that closely mimic the style and tone of each chat subject. """
